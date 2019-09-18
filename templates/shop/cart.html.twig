@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shop{% endblock %}
+
+{% block body %}
+    <p><h3>cart</h3></p>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">NAAM</th>
+            <th scope="col">AANTAL</th>
+            <th scope="col">BTW</th>
+            <th scope="col">PRIJS</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in cart %}
+            <tr>
+                <th>{{ row[2].getName }}</th>
+                <th>{{ row[1] }}</th>
+                <th>{{ row[2].getTaxcode }}</th>
+                <th>{{ row[2].getPrice }}</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p>totaal: &euro;{{ totaal }}</p>
+    <p><a href="{{ path('placeorder') }}">Place order</a></p>
+{% endblock %}
